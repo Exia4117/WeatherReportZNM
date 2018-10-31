@@ -1,4 +1,4 @@
-package com.example.a59366.weatherreport.com.example.a59366.util;
+package com.example.a59366.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
