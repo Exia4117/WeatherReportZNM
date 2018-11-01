@@ -27,35 +27,35 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    //    private static final int UPDATE_TODAY_WEATHER = 1;
+    private static final int UPDATE_TODAY_WEATHER = 1;
     private ImageView mUpdateBtn;
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv, temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg;
-//    private Handler mHandler = new Handler() {
-//        public void handleMessage(android.os.Message msg) {
-//            switch (msg.what) {
-//                case UPDATE_TODAY_WEATHER:
-//                    updateTodayWeather((TodayWeather) msg.obj);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//    };
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case UPDATE_TODAY_WEATHER:
+                    updateTodayWeather((TodayWeather) msg.obj);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
-//    void updateTodayWeather(TodayWeather todayWeather) {
-//        city_name_Tv.setText(todayWeather.getCity() + "天气");
-//        cityTv.setText(todayWeather.getCity());
-//        timeTv.setText(todayWeather.getUpdatetime() + "发布");
-//        humidityTv.setText("湿度：" + todayWeather.getShidu());
-//        pmDataTv.setText(todayWeather.getPm25());
-//        pmQualityTv.setText(todayWeather.getQuality());
-//        weekTv.setText(todayWeather.getDate());
-//        temperatureTv.setText(todayWeather.getHigh() + "~" + todayWeather.getLow());
-//        climateTv.setText(todayWeather.getType());
-//        windTv.setText("风力:" + todayWeather.getFengli());
-//        Toast.makeText(MainActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
-//    }
+    void updateTodayWeather(TodayWeather todayWeather) {
+        city_name_Tv.setText(todayWeather.getCity() + "天气");
+        cityTv.setText(todayWeather.getCity());
+        timeTv.setText(todayWeather.getUpdatetime() + "发布");
+        humidityTv.setText("湿度：" + todayWeather.getShidu());
+        pmDataTv.setText(todayWeather.getPm25());
+        pmQualityTv.setText(todayWeather.getQuality());
+        weekTv.setText(todayWeather.getDate());
+        temperatureTv.setText(todayWeather.getHigh() + "~" + todayWeather.getLow());
+        climateTv.setText(todayWeather.getType());
+        windTv.setText("风力:" + todayWeather.getFengli());
+        Toast.makeText(MainActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+    }
 
     void initView() {
         city_name_Tv = (TextView) findViewById(R.id.title_city_name);
@@ -128,10 +128,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //                    Log.d("myWeather", todayWeather.toString());
                     if (todayWeather != null) {
                         Log.d("myWeather", todayWeather.toString());
-//                        Message msg = new Message();
-//                        msg.what = UPDATE_TODAY_WEATHER;
-//                        msg.obj = todayWeather;
-//                        mHandler.sendMessage(msg);
+                        Message msg = new Message();
+                        msg.what = UPDATE_TODAY_WEATHER;
+                        msg.obj = todayWeather;
+                        mHandler.sendMessage(msg);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -189,7 +189,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         if (todayWeather != null) {
                             if (xmlPullParser.getName().equals("city")) {
                                 eventType = xmlPullParser.next();
-                               todayWeather.setCity(xmlPullParser.getText());
+                                todayWeather.setCity(xmlPullParser.getText());
                                 Log.d("myWeather", "city: " + xmlPullParser.getText());
                             } else if (xmlPullParser.getName().equals("updatetime")) {
                                 eventType = xmlPullParser.next();
