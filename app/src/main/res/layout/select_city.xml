@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/title_top"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
         android:background="#ffcd2626">
@@ -32,5 +33,40 @@
             android:layout_toRightOf="@id/title_back"
             android:background="#A71717"
             android:gravity="center" />
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/search_city"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_top"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/contact_search_box_edittext_keyword_background"
+            android:drawableLeft="@drawable/magnifying_glass"
+            android:drawablePadding="6dp"
+            android:hint="搜索全国城市（中文）"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textSize="15dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_city">
+        <ListView
+            android:id="@+id/title_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice"></ListView>
+
+    </LinearLayout>
 </RelativeLayout>
